@@ -1,60 +1,223 @@
 <!DOCTYPE html>
+
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rahul Badami</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
-body{margin:0;font-family:'Space Grotesk';background:#0b1220;color:white}
-nav{position:fixed;top:0;width:100%;background:rgba(0,0,0,0.7);backdrop-filter:blur(10px)}
-.nav-container{max-width:1100px;margin:auto;display:flex;justify-content:space-between;padding:16px}
-.nav-links{display:flex;gap:20px}
-.nav-links a{color:white;text-decoration:none}
-.hamburger{display:none;font-size:24px}
-
-@media(max-width:768px){
-.nav-links{position:absolute;top:60px;width:100%;flex-direction:column;display:none;background:#0b1220;align-items:center}
-.nav-links.active{display:flex}
-.hamburger{display:block}
+*{
+  box-sizing:border-box;
 }
 
-main{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:80px 20px}
-h1{font-size:60px;margin:0}
-p{color:#9aa4b2;max-width:500px}
-.btn{margin-top:20px;padding:12px 20px;background:#4f8cff;border-radius:8px;color:white;text-decoration:none}
-footer{text-align:center;padding:10px;color:#9aa4b2}
+body{
+  margin:0;
+  font-family:'Space Grotesk',sans-serif;
+  background:#0b1220;
+  color:white;
+  overflow:hidden; /* 🔥 prevents unwanted scroll */
+}
+
+/* NAV */
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  background:rgba(0,0,0,0.85);
+  backdrop-filter:blur(12px);
+  z-index:1000;
+}
+
+.nav-container{
+  max-width:1100px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:14px 20px;
+}
+
+.logo{
+  font-weight:600;
+  font-size:16px;
+}
+
+.nav-links{
+  display:flex;
+  gap:18px;
+}
+
+.nav-links a{
+  color:white;
+  text-decoration:none;
+  font-size:14px;
+  opacity:0.8;
+  transition:0.2s;
+}
+
+.nav-links a:hover{
+  opacity:1;
+}
+
+.hamburger{
+  display:none;
+  font-size:24px;
+  cursor:pointer;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .hamburger{display:block}
+
+  .nav-links{
+    position:absolute;
+    top:60px;
+    left:0;
+    width:100%;
+    background:#0b1220;
+    flex-direction:column;
+    align-items:center;
+    padding:20px 0;
+    display:none;
+  }
+
+  .nav-links.active{display:flex}
+}
+
+/* HERO */
+.hero{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:20px;
+}
+
+/* NAME STYLE (RESTORED 🔥) */
+.name{
+  font-size:52px;
+  font-weight:700;
+  background:linear-gradient(90deg,#4f8cff,#22c55e,#a855f7);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+@media(max-width:768px){
+  .name{
+    font-size:34px;
+  }
+}
+
+.tagline{
+  margin-top:16px;
+  font-size:18px;
+  color:#9aa4b2;
+  max-width:600px;
+}
+
+@media(max-width:768px){
+  .tagline{
+    font-size:15px;
+  }
+}
+
+/* CTA */
+.cta{
+  margin-top:30px;
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+
+.btn{
+  padding:12px 20px;
+  border-radius:8px;
+  text-decoration:none;
+  font-size:14px;
+  transition:0.3s;
+}
+
+.primary{
+  background:#4f8cff;
+  color:white;
+}
+
+.primary:hover{
+  background:#3b6fd6;
+}
+
+.secondary{
+  border:1px solid #4f8cff;
+  color:#4f8cff;
+}
+
+.secondary:hover{
+  background:#4f8cff;
+  color:white;
+}
+
+/* FOOTER (kept inside viewport, no scroll) */
+.footer{
+  position:absolute;
+  bottom:20px;
+  width:100%;
+  text-align:center;
+  font-size:13px;
+  color:#6b7280;
+}
 </style>
+
 </head>
 
 <body>
 
 <nav>
-<div class="nav-container">
-<div>Rahul Badami</div>
+  <div class="nav-container">
+    <div class="logo">Rahul Badami</div>
+
+```
 <div class="nav-links" id="navLinks">
-<a href="index.html">Home</a>
-<a href="work.html">Work</a>
-<a href="case-studies.html">Case Studies</a>
-<a href="blog.html">Blog</a>
-<a href="games.html">Games</a>
+  <a href="index.html">Home</a>
+  <a href="work.html">Work</a>
+  <a href="case-studies.html">Case Studies</a>
+  <a href="blog.html">Blog</a>
+  <a href="games.html">Games</a>
 </div>
+
 <div class="hamburger" onclick="toggleMenu()">☰</div>
-</div>
+```
+
+  </div>
 </nav>
 
-<main>
-<h1>Rahul Badami</h1>
-<p>Backend Engineer building scalable distributed systems and high performance applications.</p>
-<a href="/resume.pdf" class="btn">Resume</a>
-</main>
+<div class="hero">
 
-<footer>
-srahulbadami@gmail.com • srahulbadami.in
-</footer>
+  <div class="name">Rahul Badami</div>
+
+  <div class="tagline">
+    Software Engineer building scalable backend systems, distributed architectures, and high-performance applications. Passionate about system design, reliability, and creating impactful products.
+  </div>
+
+  <div class="cta">
+    <a href="work.html" class="btn primary">View Work</a>
+    <a href="/resume.pdf" class="btn secondary">Resume</a>
+  </div>
+
+</div>
+
+<div class="footer">
+  srahulbadami@gmail.com • srahulbadami.in
+</div>
 
 <script>
-function toggleMenu(){document.getElementById("navLinks").classList.toggle("active")}
+function toggleMenu(){
+  document.getElementById("navLinks").classList.toggle("active");
+}
 </script>
 
 </body>
