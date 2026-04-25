@@ -1,239 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Start your development with Meyawo landing page.">
-    <meta name="author" content="Devcrud">
-    <title>Rahul Badami | Developer@Amazon</title>
-    <!-- font icons -->
-    <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
-    <!-- Bootstrap + Meyawo main styles -->
-    <link rel="stylesheet" href="assets/css/meyawo.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rahul Badami</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;font-family:'Space Grotesk',sans-serif;background:#0b1220;color:white}
+
+a{text-decoration:none;color:white}
+
+nav{position:fixed;top:0;width:100%;display:flex;justify-content:center;background:rgba(0,0,0,0.6);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.08);z-index:1000}
+.nav-container{width:100%;max-width:1100px;display:flex;justify-content:space-between;padding:16px}
+.nav-links{display:flex;gap:14px}
+.nav-links a{padding:8px 14px;border-radius:8px;color:white;transition:.3s}
+.nav-links a:hover{background:#4f8cff}
+
+header{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+
+h1{font-size:64px;background:linear-gradient(90deg,#4f8cff,#22c55e,#f59e0b);-webkit-background-clip:text;color:transparent}
+
+.tag{margin-top:10px;color:#9aa4b2}
+
+.btn{margin-top:20px;padding:12px 24px;background:#4f8cff;border-radius:8px}
+
+.footer{position:absolute;bottom:20px;text-align:center;width:100%;color:#9aa4b2;font-size:14px}
+</style>
 </head>
+<body>
 
-<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
+<nav>
+  <div class="nav-container">
+    <div>Rahul Badami</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="work.html">Work</a>
+      <a href="games.html">Games</a>
+    </div>
+  </div>
+</nav>
 
-    <!-- Page Navbar -->
-    <nav class="custom-navbar" data-spy="affix" data-offset-top="20">
-        <div class="container">
-            <a class="logo" href="#">Badami</a>
-            <ul class="nav">
-                <li class="item">
-                    <a class="link" href="#home">Home</a>
-                </li>
-                <li class="item">
-                    <a class="link" href="#about">About</a>
-                </li>
-                <li class="item">
-                    <a class="link" href="#portfolio">Portfolio</a>
-                </li>
-                <li class="item">
-                    <a class="link" href="/resume.pdf">Resume</a>
-                </li>
-                <li class="item">
-                    <a class="link" href="https://blog.rahul.badami.one/">Blog</a>
-                </li>
-                <li class="item">
-                    <a class="link" href="#contact">Contact</a>
-                </li>
-            </ul>
-            <a href="javascript:void(0)" id="nav-toggle" class="hamburger hamburger--elastic">
-                <div class="hamburger-box">
-                    <div class="hamburger-inner"></div>
-                </div>
-            </a>
-        </div>
-    </nav><!-- End of Page Navbar -->
+<header>
+  <h1>Rahul Badami</h1>
+  <p class="tag">SDE II @ Amazon • Distributed Systems • High Scale Backend</p>
+  <a class="btn" href="/resume.pdf">Resume</a>
+</header>
 
-    <!-- page header -->
-    <header id="home" class="header">
-        <div class="overlay"></div>
-        <div class="header-content container">
-            <h1 class="header-title">
-                <span class="up">HI!</span>
-                <span class="down">I am Rahul Badami</span>
-            </h1>
-            <p class="header-subtitle">SOFTWARE DEVELOPER</p>
-
-            <a class="btn btn-primary" href="#service">Visit My Works</a>
-        </div>
-    </header><!-- end of page header -->
-
-    <!-- about section -->
-    <section class="section pt-0" id="about">
-        <!-- container -->
-        <div class="container text-center">
-            <!-- about wrapper -->
-            <div class="about">
-                <div class="about-img-holder">
-                    <img src="assets/imgs/main.png" class="about-img"
-                        alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">
-                </div>
-                <div class="about-caption">
-                    <p class="section-subtitle">Who Am I ?</p>
-                    <h2 class="section-title mb-3">About Me</h2>
-                    <p>
-                        Working as a Sofware Developer Engineer II @ Amazon. 
-                        <br><br>Experienced Full Stack Engineer with a demonstrated history of working in the retail industry. Skilled in Angular, Django, Python (Programming Language), Spring Boot, Laravel, and Java. Strong engineering professional with a Bachelor of Technology Degree focused in Computer Science from Indian Institute of Information Technology Kottayam. 
-                    </p>
-                    <a class="btn-rounded btn btn-outline-primary mt-4" href="/resume.pdf">Download CV</a>
-                </div>
-            </div><!-- end of about wrapper -->
-        </div><!-- end of container -->
-    </section> <!-- end of about section -->
-
-    <!-- service section -->
-    <section class="section" id="service">
-        <div class="container text-center">
-            <p class="section-subtitle">What I Do ?</p>
-            <h6 class="section-title mb-6">Projects</h6>
-            <!-- row -->
-            <div class="row">
-                <div class="col-md-6 col-lg-3">
-                    <div class="service-card">
-                        <div class="body">
-                            <img src="assets/imgs/pencil-case.svg"
-                                alt="A free online platform powered by the state-of-the-art dictionary to practice vocabulary"
-                                class="icon">
-                            <h6 class="title">WordGame</h6>
-                            <p class="subtitle">A free online platform powered by the state-of-the-art dictionary to practice vocabulary</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="service-card">
-                        <div class="body">
-                            <img src="assets/imgs/responsive.svg"
-                                alt="A Movie Guessing Game"
-                                class="icon">
-                            <h6 class="title">Movie Guess Karo</h6>
-                            <p class="subtitle">Labore velit culpa adipisci excepturi consequuntur itaque in nam
-                                molestias dolorem iste quod.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="service-card">
-                        <div class="body">
-                            <img src="assets/imgs/toolbox.svg"
-                                alt="AI Bot which generates Presentations using a single input"
-                                class="icon">
-                            <h6 class="title">Presentor Bot</h6>
-                            <p class="subtitle">AI Bot which generates Presentations using a single input.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="service-card">
-                        <div class="body">
-                            <img src="assets/imgs/analytics.svg"
-                                alt="Got bored of reading Articles ? Watch them Instead"
-                                class="icon">
-                            <h6 class="title">Artilizer</h6>
-                            <p class="subtitle">Got bored of reading Articles ? Watch them Instead.</p>
-                        </div>
-                    </div>
-                </div>
-            </div><!-- end of row -->
-        </div>
-    </section><!-- end of service section -->
-
-    <!-- portfolio section -->
-    <section class="section" id="portfolio">
-        <div class="container text-center">
-            <p class="section-subtitle">What I Did ?</p>
-            <h6 class="section-title mb-6">Portfolio</h6>
-            <!-- row -->
-            <div class="row">
-                <div class="col-md-4">
-                    <a href="#" class="portfolio-card">
-                        <img src="assets/imgs/folio-1.jpg" class="portfolio-card-img"
-                            alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">
-                        <span class="portfolio-card-overlay">
-                            <span class="portfolio-card-caption">
-                                <h4>Web Development</h5>
-                                    <p class="font-weight-normal">Django. Laravel. Flask. React. Angular. Spring</p>
-                            </span>
-                        </span>
-                    </a>
-                </div>
-                <div class="col-md-4">
-                    <a href="#" class="portfolio-card">
-                        <img class="portfolio-card-img" src="assets/imgs/folio-2.jpg" class="img-responsive rounded"
-                            alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">
-                        <span class="portfolio-card-overlay">
-                            <span class="portfolio-card-caption">
-                                <h4>Android Development</h5>
-                                    <p class="font-weight-normal">React Native. Android</p>
-                            </span>
-                        </span>
-                    </a>
-                </div>
-                <div class="col-md-4">
-                    <a href="#" class="portfolio-card">
-                        <img class="portfolio-card-img" src="assets/imgs/folio-3.jpg" class="img-responsive rounded"
-                            alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">
-                        <span class="portfolio-card-overlay">
-                            <span class="portfolio-card-caption">
-                                <h4>Database Tools</h5>
-                                    <p class="font-weight-normal">MongoDB. DyanamoDB. MySql. Postgresql</p>
-                            </span>
-                        </span>
-                    </a>
-                </div>
-            </div><!-- end of row -->
-        </div><!-- end of container -->
-    </section> <!-- end of portfolio section -->
-
-    <!-- contact section -->
-    <section class="section" id="contact">
-        <div class="container text-center">
-            <p class="section-subtitle">How can you communicate?</p>
-            <h6 class="section-title mb-5">Contact Me</h6>
-            <!-- contact form -->
-            <form action="" class="contact-form col-md-10 col-lg-8 m-auto">
-                <div class="form-row">
-                    <div class="form-group col-sm-6">
-                        <input type="text" size="50" class="form-control" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group col-sm-6">
-                        <input type="email" class="form-control" placeholder="Enter Email" requried>
-                    </div>
-                    <div class="form-group col-sm-12">
-                        <textarea name="comment" id="comment" rows="6" class="form-control"
-                            placeholder="Write Something"></textarea>
-                    </div>
-                    <div class="form-group col-sm-12 mt-3">
-                        <a href="mailto:srahulbadami@gmail.com" class="btn btn-outline-primary rounded">Send Message</a>
-                    </div>
-                </div>
-            </form><!-- end of contact form -->
-        </div><!-- end of container -->
-    </section><!-- end of contact section -->
-
-    <!-- footer -->
-    <div class="container">
-        <footer class="footer">
-            <div class="social-links text-right m-auto ml-sm-auto">
-                <a href="https://twitter.com/srahulbadami" class="link"><i class="ti-twitter-alt"></i></a>
-                <a href="https://www.linkedin.com/in/srahulbadami" class="link"><i class="ti-linkedin"></i></a>
-                <a href="mailto:srahulbadami@gmail.com" class="link"><i class="ti-google"></i></a>
-            </div>
-        </footer>
-    </div> <!-- end of page footer -->
-
-    <!-- core  -->
-    <script src="assets/vendors/jquery/jquery-3.4.1.js"></script>
-    <script src="assets/vendors/bootstrap/bootstrap.bundle.js"></script>
-
-    <!-- bootstrap 3 affix -->
-    <script src="assets/vendors/bootstrap/bootstrap.affix.js"></script>
-
-    <!-- Meyawo js -->
-    <script src="assets/js/meyawo.js"></script>
+<div class="footer">
+  <p>srahulbadami@gmail.com • github.com/srahulbadami • srahulbadami.in</p>
+</div>
 
 </body>
-
 </html>
