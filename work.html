@@ -2,34 +2,82 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Work</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+
 <style>
-body{margin:0;font-family:'Space Grotesk',sans-serif;background:#0b1220;color:white;padding-top:80px}
+body{
+  margin:0;
+  font-family:'Space Grotesk',sans-serif;
+  background:#0b1220;
+  color:white;
+  padding-top:80px;
+}
 a{text-decoration:none;color:white}
 
-nav{position:fixed;top:0;width:100%;display:flex;justify-content:center;background:rgba(0,0,0,0.6);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.08)}
-.nav-container{width:100%;max-width:1100px;display:flex;justify-content:space-between;padding:16px}
-.nav-links{display:flex;gap:14px}
+/* NAV */
+nav{
+  position:fixed;
+  width:100%;
+  top:0;
+  display:flex;
+  justify-content:center;
+  background:rgba(0,0,0,0.6);
+}
+.nav-container{
+  width:100%;
+  max-width:1100px;
+  display:flex;
+  justify-content:space-between;
+  padding:16px;
+}
+.nav-links{display:flex;gap:12px}
 .nav-links a{padding:8px 14px;border-radius:8px}
 .nav-links a:hover{background:#4f8cff}
 
-.container{max-width:1100px;margin:auto;padding:40px 20px}
+/* CONTENT */
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:40px 20px;
+}
 
-h1{text-align:center;margin-bottom:20px}
+h1{text-align:center}
 
-.intro{text-align:center;color:#9aa4b2;margin-bottom:40px}
+.intro{
+  text-align:center;
+  color:#9aa4b2;
+  margin-bottom:40px;
+}
 
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px;
+}
 
-.card{background:#111827;padding:24px;border-radius:14px;transition:.4s}
-.card:hover{transform:scale(1.05)}
+.card{
+  background:#111827;
+  padding:24px;
+  border-radius:14px;
+  transition:.3s;
+}
+.card:hover{
+  transform:scale(1.05);
+}
 
-p{color:#9aa4b2;font-size:14px}
+p{color:#9aa4b2}
 
-.end{text-align:center;margin-top:40px;color:#9aa4b2}
+.end{
+  text-align:center;
+  margin-top:40px;
+  color:#9aa4b2;
+}
 </style>
 </head>
+
 <body>
 
 <nav>
@@ -46,39 +94,67 @@ p{color:#9aa4b2;font-size:14px}
 <div class="container">
 
 <h1>Experience & Work</h1>
-<p class="intro">Building scalable systems handling high traffic, optimizing performance, and designing resilient architectures.</p>
+
+<p class="intro">
+Designing high-scale backend systems, optimizing performance, and building resilient distributed architectures.
+</p>
 
 <div class="grid">
 
 <div class="card">
 <h3>Amazon — SDE II</h3>
-<p>Designed backend services handling thousands of requests per second, improving latency by ~30% and increasing system reliability.</p>
+<p>Designed backend systems handling thousands of requests/sec, reduced latency by ~30%, improved reliability under peak load.</p>
 </div>
 
 <div class="card">
 <h3>Microservices Platform</h3>
-<p>Deployed microservices on AWS EKS with CI/CD, reducing deployment time by 40%.</p>
+<p>Built AWS EKS-based microservices with CI/CD, reducing deployment time by 40%.</p>
 </div>
 
 <div class="card">
-<h3>Cloud Infrastructure</h3>
-<p>Implemented multi-region failover with Route53 ensuring high availability.</p>
+<h3>Cloud Architecture</h3>
+<p>Implemented multi-region failover using Route53, ensuring high availability.</p>
 </div>
 
 <div class="card">
 <h3>System Optimization</h3>
-<p>Optimized APIs and caching, improving throughput significantly under load.</p>
+<p>Improved throughput and performance under heavy traffic using caching and query optimization.</p>
 </div>
 
 <div class="card">
-<h3>Full Stack Engineering</h3>
-<p>Built applications using Spring Boot, Django, React, Angular.</p>
+<h3>Full Stack Systems</h3>
+<p>Worked across Spring Boot, Django, React, Angular to build scalable applications.</p>
 </div>
 
 </div>
 
-<p class="end">Focused on building reliable, scalable, and high-performance systems.</p>
+<p class="end">
+Focused on building reliable, scalable, high-performance systems.
+</p>
 
+<p class="end">
+<a href="case-study.html">→ View Detailed Case Study</a>
+</p>
+<h2>Writing & Insights</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Scaling Backend Systems</h3>
+<p>Lessons from handling high traffic systems and reducing latency.</p>
+</div>
+
+<div class="card">
+<h3>Debugging Production Issues</h3>
+<p>Real-world debugging strategies and failure handling.</p>
+</div>
+
+<div class="card">
+<h3>Deployments & CI/CD</h3>
+<p>Making deployments reliable and fast.</p>
+</div>
+
+</div>
 </div>
 
 </body>

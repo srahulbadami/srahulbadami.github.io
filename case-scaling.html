@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>System Design Case Study</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+body{margin:0;font-family:Space Grotesk;background:#0b1220;color:white;padding:80px 20px}
+.container{max-width:1000px;margin:auto}
+.box{background:#111827;padding:20px;border-radius:12px;margin-top:20px;color:#9aa4b2}
+.diagram{background:#020617;padding:20px;font-family:monospace;color:#22c55e;border-radius:12px;margin-top:20px;overflow:auto}
+h1{font-size:42px}
+h2{margin-top:40px}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Designing & Scaling a High Traffic Backend System</h1>
+
+<div class="box">
+This system was responsible for handling high-volume traffic with strict latency requirements. During peak traffic, the system experienced p95 latency spikes, database contention, and intermittent failures. The goal was to redesign the architecture to support scalability, reliability, and fault tolerance.
+</div>
+
+<h2>📌 Requirements</h2>
+<div class="box">
+- Handle thousands of requests per second  
+- Maintain p95 latency < 200ms  
+- Ensure high availability (99.9%+)  
+- Support safe deployments  
+</div>
+
+<h2>🏗️ High Level Design (HLD)</h2>
+
+<div class="diagram">
+Client  
+  ↓  
+API Gateway  
+  ↓  
+Service Layer (Stateless)  
+  ↓  
+Cache (Redis-like)  
+  ↓  
+Database  
+
+Async Flow:
+Service → Queue → Worker → DB
+</div>
+
+<div class="box">
+The system separates read-heavy and write-heavy workloads. API Gateway handles routing and throttling. Stateless services enable horizontal scaling. Caching reduces database pressure, and async queues handle heavy processing.
+</div>
+
+<h2>🔍 Low Level Design (LLD)</h2>
+
+<div class="diagram">
+GET /orders/{id}
+→ check cache
+→ if miss → fetch from DB → update cache
+
+POST /orders
+→ validate request
+→ write to DB
+→ publish event to queue
+→ worker processes downstream tasks
+</div>
+
+<div class="box">
+Core logic focuses on minimizing synchronous dependencies and ensuring idempotency across operations.
+</div>
+
+<h2>🔌 API Design</h2>
+
+<div class="box">
+<strong>GET /orders/{id}</strong><br>
+Response: { id, status, amount }<br><br>
+
+<strong>POST /orders</strong><br>
+Request: { userId, items, paymentInfo }<br>
+Response: { orderId, status }<br><br>
+
+<strong>POST /payments</strong><br>
+Handles payment processing with idempotency key
+</div>
+
+<h2>⚠️ Failure Handling</h2>
+
+<div class="box">
+<strong>Retry Mechanism:</strong><br>
+Transient failures retried with exponential backoff.<br><br>
+
+<strong>Dead Letter Queue (DLQ):</strong><br>
+Failed messages pushed to DLQ for manual inspection.<br><br>
+
+<strong>Circuit Breaker:</strong><br>
+Stops calling failing services to prevent cascading failures.<br><br>
+
+<strong>Idempotency:</strong><br>
+Ensures duplicate requests don’t create inconsistent state.
+</div>
+
+<h2>📉 Bottlenecks Identified</h2>
+<div class="box">
+- Database contention  
+- Blocking synchronous calls  
+- Lack of caching  
+</div>
+
+<h2>⚙️ Improvements</h2>
+<div class="box">
+- Introduced caching layer  
+- Moved heavy operations to async workers  
+- Optimized DB queries and indexing  
+- Added monitoring and alerts  
+</div>
+
+<h2>📈 Impact</h2>
+<div class="box">
+- Reduced p95 latency from ~220ms → ~150ms  
+- Improved throughput significantly  
+- Reduced system failures under peak load  
+</div>
+
+<h2>📊 Latency Graph</h2>
+<canvas id="chart"></canvas>
+
+<script>
+new Chart(document.getElementById('chart'), {
+  type: 'line',
+  data: {
+    labels: ['Before','After'],
+    datasets: [{
+      label: 'Latency (ms)',
+      data: [220,150]
+    }]
+  }
+});
+</script>
+
+<h2>🧠 Learnings</h2>
+<div class="box">
+Scaling systems is about removing bottlenecks and designing for failure. Introducing asynchronous processing and caching provided the biggest improvements. Observability was critical in identifying system weaknesses.
+</div>
+
+</div>
+
+</body>
+</html>

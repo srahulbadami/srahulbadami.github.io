@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Study - Rahul Badami</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+body{
+  margin:0;
+  font-family:'Space Grotesk',sans-serif;
+  background:#0b1220;
+  color:white;
+  line-height:1.6;
+}
+
+/* NAV */
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  background:rgba(0,0,0,0.6);
+}
+.nav-container{
+  width:100%;
+  max-width:1100px;
+  display:flex;
+  justify-content:space-between;
+  padding:16px;
+}
+.nav-links{display:flex;gap:12px}
+.nav-links a{padding:8px 14px;border-radius:8px;color:white;text-decoration:none}
+.nav-links a:hover{background:#4f8cff}
+
+/* CONTENT */
+.container{
+  max-width:950px;
+  margin:auto;
+  padding:100px 20px;
+}
+
+h1{font-size:42px}
+h2{margin-top:40px}
+
+p{color:#9aa4b2}
+
+.box{
+  background:#111827;
+  padding:20px;
+  border-radius:12px;
+  margin-top:20px;
+}
+
+/* DIAGRAM */
+.diagram{
+  margin-top:20px;
+  padding:20px;
+  background:#020617;
+  border-radius:12px;
+  font-family:monospace;
+  font-size:14px;
+  white-space:pre;
+  overflow:auto;
+  color:#22c55e;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="nav-container">
+    <div>Rahul Badami</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="work.html">Work</a>
+      <a href="games.html">Games</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+
+<h1>Scaling a High Traffic Backend System</h1>
+
+<p>
+Designed and optimized backend systems handling thousands of requests per second, focusing on latency, reliability, and fault tolerance.
+</p>
+
+<h2>🔴 Problem</h2>
+<div class="box">
+- High latency under peak traffic  
+- DB bottlenecks  
+- Unpredictable failures under load  
+- Slow deployments affecting iteration speed  
+</div>
+
+<h2>🧠 System Design</h2>
+
+<div class="diagram">
+Client → API Gateway → Service Layer → Cache → Database  
+                 ↓  
+           Async Queue → Worker Services
+</div>
+
+<p>
+The system was redesigned to decouple synchronous and asynchronous workloads, reducing blocking operations.
+</p>
+
+<h2>⚙️ Approach</h2>
+<div class="box">
+- Introduced caching layer (Redis-like strategy)  
+- Optimized DB queries and indexing  
+- Implemented async queues for heavy operations  
+- Improved API contract design  
+- Added observability and logging  
+</div>
+
+<h2>📈 Impact</h2>
+<div class="box">
+- Reduced latency by ~30%  
+- Improved throughput under peak load  
+- Increased system stability  
+- Reduced deployment time by ~40%  
+</div>
+
+<h2>💳 PSP Integration (Payments)</h2>
+<div class="box">
+Integrated third-party payment providers with retry mechanisms, idempotency keys, and failure handling.  
+Ensured safe transaction processing and consistency across services.
+</div>
+
+<h2>⚡ Real Engineering Work</h2>
+<div class="box">
+- Bulk actions implementation for large datasets  
+- Custom domain linking and DNS troubleshooting  
+- CI/CD pipeline debugging and optimization  
+- Handling service deployment failures  
+- Debugging production issues under load  
+</div>
+
+<h2>🌍 Open Source & GSoC</h2>
+<div class="box">
+Worked on open-source contributions, collaborating with global teams, reviewing PRs, and building production-grade features.
+</div>
+
+<h2>🔧 Tech Stack</h2>
+<div class="box">
+Java • Spring Boot • AWS • Kubernetes • CI/CD • Distributed Systems
+</div>
+
+<h2>🧠 Key Learnings</h2>
+<div class="box">
+- Scaling is mostly about removing bottlenecks  
+- Observability is critical  
+- Simplicity > over-engineering  
+- Failures should be expected and handled  
+</div>
+
+</div>
+
+</body>
+</html>

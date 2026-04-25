@@ -4,29 +4,35 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rahul Badami</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
-<style>
-body{margin:0;font-family:'Space Grotesk',sans-serif;background:#0b1220;color:white}
 
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+body{margin:0;font-family:'Space Grotesk';background:#0b1220;color:white}
 a{text-decoration:none;color:white}
 
-nav{position:fixed;top:0;width:100%;display:flex;justify-content:center;background:rgba(0,0,0,0.6);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.08);z-index:1000}
+nav{position:fixed;top:0;width:100%;display:flex;justify-content:center;background:rgba(0,0,0,0.6)}
 .nav-container{width:100%;max-width:1100px;display:flex;justify-content:space-between;padding:16px}
-.nav-links{display:flex;gap:14px}
-.nav-links a{padding:8px 14px;border-radius:8px;color:white;transition:.3s}
+.nav-links{display:flex;gap:12px}
+.nav-links a{padding:8px 14px;border-radius:8px}
 .nav-links a:hover{background:#4f8cff}
+
+@media(max-width:768px){
+.nav-container{flex-direction:column;align-items:center}
+.nav-links{flex-wrap:wrap;justify-content:center;margin-top:10px}
+}
 
 header{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
 
-h1{font-size:64px;background:linear-gradient(90deg,#4f8cff,#22c55e,#f59e0b);-webkit-background-clip:text;color:transparent}
+h1{font-size:clamp(32px,8vw,64px);background:linear-gradient(90deg,#4f8cff,#22c55e,#f59e0b);-webkit-background-clip:text;color:transparent}
 
-.tag{margin-top:10px;color:#9aa4b2}
-
+.tag{color:#9aa4b2}
 .btn{margin-top:20px;padding:12px 24px;background:#4f8cff;border-radius:8px}
 
-.footer{position:absolute;bottom:20px;text-align:center;width:100%;color:#9aa4b2;font-size:14px}
+.footer{position:absolute;bottom:20px;width:100%;text-align:center;color:#9aa4b2}
 </style>
 </head>
+
 <body>
 
 <nav>
@@ -35,6 +41,8 @@ h1{font-size:64px;background:linear-gradient(90deg,#4f8cff,#22c55e,#f59e0b);-web
     <div class="nav-links">
       <a href="index.html">Home</a>
       <a href="work.html">Work</a>
+      <a href="case-studies.html">Case Studies</a>
+      <a href="blog.html">Blog</a>
       <a href="games.html">Games</a>
     </div>
   </div>
@@ -47,7 +55,7 @@ h1{font-size:64px;background:linear-gradient(90deg,#4f8cff,#22c55e,#f59e0b);-web
 </header>
 
 <div class="footer">
-  <p>srahulbadami@gmail.com • github.com/srahulbadami • srahulbadami.in</p>
+  srahulbadami@gmail.com • github.com/srahulbadami • srahulbadami.in
 </div>
 
 </body>

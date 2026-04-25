@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Engineering Blog</title>
+
+<style>
+body{margin:0;font-family:Georgia,serif;background:#0b1220;color:#e5e7eb}
+.container{max-width:850px;margin:auto;padding:80px 20px}
+h1{font-size:42px}
+h2{margin-top:40px}
+p{margin-top:16px;line-height:1.8}
+.code{background:#020617;padding:16px;border-radius:8px;color:#22c55e;font-family:monospace;margin-top:16px}
+.nav{display:flex;justify-content:space-between;margin-top:40px}
+button{padding:10px 16px;background:#4f8cff;border:none;color:white;border-radius:8px}
+</style>
+</head>
+
+<body>
+
+<div class="container" id="content"></div>
+
+<script>
+
+let index = 0;
+
+const blogs = [
+
+`<h1>Integrating Stripe with Django: Building a Reliable Payment System</h1>
+
+<p>
+Payment systems are one of the most sensitive parts of any application. Unlike other features, failures in payments directly impact revenue and user trust. During my work integrating Stripe with Django, I realized that the complexity is not in calling APIs, but in handling real-world scenarios like retries, failures, and asynchronous consistency.
+</p>
+
+<p>
+At a high level, Stripe provides a clean abstraction for creating and managing payments. However, production systems require much more than just API integration. You need to think about reliability, correctness, and observability.
+</p>
+
+<h2>Payment Flow Design</h2>
+
+<p>
+The flow starts with creating a payment intent. This represents a pending transaction which can later succeed or fail.
+</p>
+
+<div class="code">
+intent = stripe.PaymentIntent.create(
+    amount=amount,
+    currency='usd',
+    metadata={'user_id': user.id}
+)
+</div>
+
+<p>
+At this stage, many developers assume the payment is complete. That assumption is incorrect. The real source of truth is the webhook event sent by Stripe.
+</p>
+
+<h2>Webhook-Driven Architecture</h2>
+
+<p>
+Stripe uses webhooks to notify the backend about payment status changes. This ensures that even if the frontend crashes or the user disconnects, the system still receives updates.
+</p>
+
+<div class="code">
+@csrf_exempt
+def webhook(request):
+    event = stripe.Event.construct_from(json.loads(request.body), stripe.api_key)
+
+    if event['type'] == 'payment_intent.succeeded':
+        process_success(event['data']['object'])
+</div>
+
+<p>
+This shifts the system from a synchronous model to an event-driven model, which is much more reliable in distributed environments.
+</p>
+
+<h2>Handling Failures</h2>
+
+<p>
+Real-world systems fail in unpredictable ways. Network issues, duplicate webhook events, and partial failures are common.
+</p>
+
+<p>
+To handle these, several strategies were implemented:
+</p>
+
+<ul>
+<li>Idempotency keys to prevent duplicate processing</li>
+<li>Retry mechanisms for transient failures</li>
+<li>Reconciliation jobs to fix inconsistent states</li>
+</ul>
+
+<p>
+One key learning here is that payment systems should always assume failure. Designing for the happy path is not enough.
+</p>
+
+<h2>Consistency and Data Integrity</h2>
+
+<p>
+Ensuring that the payment state in your system matches Stripe’s state is critical. This requires validating webhook events and updating internal records carefully.
+</p>
+
+<p>
+Any mismatch can lead to issues like double charges or missing payments, which are unacceptable in production systems.
+</p>
+
+<h2>Key Takeaways</h2>
+
+<p>
+Payment systems are fundamentally about correctness and reliability. The API integration is the easiest part. The real challenge is handling edge cases and ensuring consistency across distributed components.
+</p>
+
+<p>
+By adopting webhook-driven architecture, idempotency, and retries, the system becomes resilient and production-ready.
+</p>`,
+
+`<h1>Scaling Backend Systems: From Bottlenecks to High Throughput</h1>
+
+<p>
+Scaling backend systems is often misunderstood as simply adding more servers. In reality, scaling is about identifying and eliminating bottlenecks.
+</p>
+
+<p>
+In one of the systems I worked on, the application faced latency spikes during peak traffic. The root cause was not lack of resources, but inefficient system design.
+</p>
+
+<h2>Identifying Bottlenecks</h2>
+
+<p>
+The first step in scaling is understanding where the system is slowing down. Metrics showed that database queries were taking the majority of the request time.
+</p>
+
+<p>
+This indicated that the database was the primary bottleneck.
+</p>
+
+<h2>Caching Strategy</h2>
+
+<p>
+To reduce database load, a caching layer was introduced. Frequently accessed data was stored in memory.
+</p>
+
+<div class="code">
+if(cache.exists(key)){
+    return cache.get(key);
+} else {
+    data = db.query();
+    cache.set(key, data);
+}
+</div>
+
+<p>
+This significantly reduced database hits and improved response times.
+</p>
+
+<h2>Asynchronous Processing</h2>
+
+<p>
+Another major improvement was moving heavy operations to asynchronous workers. Tasks that did not require immediate response were offloaded to a queue.
+</p>
+
+<p>
+This ensured that user-facing APIs remained fast and responsive.
+</p>
+
+<h2>Tradeoffs</h2>
+
+<p>
+Introducing caching and async processing increases system complexity. It also introduces eventual consistency.
+</p>
+
+<p>
+However, the performance gains far outweigh these tradeoffs in high-scale systems.
+</p>
+
+<h2>Results</h2>
+
+<p>
+After these changes:
+</p>
+
+<ul>
+<li>Latency reduced by ~30%</li>
+<li>Throughput increased significantly</li>
+<li>System stability improved under load</li>
+</ul>
+
+<p>
+The key takeaway is that scaling is not about adding resources, but about designing systems efficiently.
+</p>`,
+
+`<h1>Debugging Production Systems: A Structured Approach</h1>
+
+<p>
+Debugging production systems is fundamentally different from debugging local code. Issues are often intermittent and occur under load, making them difficult to reproduce.
+</p>
+
+<p>
+The key to effective debugging is structured thinking.
+</p>
+
+<h2>Gathering Data</h2>
+
+<p>
+The first step is always to collect logs and metrics. Without data, debugging becomes guesswork.
+</p>
+
+<div class="code">
+grep "ERROR" logs.txt | tail -n 50
+</div>
+
+<p>
+Logs provide insight into what the system was doing when the issue occurred.
+</p>
+
+<h2>Breaking Down the Problem</h2>
+
+<p>
+Instead of debugging the entire system, it is more effective to isolate components. Identify which service or dependency is failing.
+</p>
+
+<p>
+This reduces the scope and makes the problem manageable.
+</p>
+
+<h2>Common Issues</h2>
+
+<ul>
+<li>Timeouts due to slow downstream services</li>
+<li>Memory leaks</li>
+<li>Misconfigured deployments</li>
+</ul>
+
+<p>
+Each of these requires a different debugging strategy.
+</p>
+
+<h2>Improving Observability</h2>
+
+<p>
+Adding proper monitoring and alerts makes debugging much easier. Metrics like latency, error rates, and throughput provide valuable insights.
+</p>
+
+<p>
+Tools are important, but thinking clearly under pressure is what truly matters.
+</p>
+
+<h2>Conclusion</h2>
+
+<p>
+Debugging is not just a skill, but a mindset. A structured approach helps identify issues quickly and minimizes impact on users.
+</p>`
+
+];
+
+function render(){
+document.getElementById("content").innerHTML = blogs[index] + `
+<div class="nav">
+<button onclick="prev()">← Prev</button>
+<button onclick="next()">Next →</button>
+</div>`;
+}
+
+function next(){ index=(index+1)%blogs.length; render();}
+function prev(){ index=(index-1+blogs.length)%blogs.length; render();}
+
+render();
+
+</script>
+
+</body>
+</html>

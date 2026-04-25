@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PSP Integration Case Study</title>
+
+<style>
+body{margin:0;font-family:Space Grotesk;background:#0b1220;color:white;padding:80px 20px}
+.container{max-width:900px;margin:auto}
+.box{background:#111827;padding:20px;border-radius:12px;margin-top:20px;color:#9aa4b2}
+.code{background:#020617;padding:16px;border-radius:8px;color:#22c55e;font-family:monospace;margin-top:16px}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Payment System Integration (Stripe + Django)</h1>
+
+<div class="box">
+Designed and implemented a robust payment system integrating Stripe with Django, focusing on reliability, consistency, and failure handling.
+</div>
+
+<h2>Architecture</h2>
+
+<div class="code">
+Client → Backend (Django) → Stripe  
+        ↓  
+     Webhook Handler → DB
+</div>
+
+<h2>Payment Flow</h2>
+
+<div class="code">
+intent = stripe.PaymentIntent.create(
+  amount=amount,
+  currency='usd'
+)
+</div>
+
+<div class="box">
+Payment creation is only the first step. Final confirmation comes from Stripe webhooks.
+</div>
+
+<h2>Webhook Handling</h2>
+
+<div class="code">
+if event['type'] == 'payment_intent.succeeded':
+    update_payment_status()
+</div>
+
+<h2>Challenges</h2>
+
+<div class="box">
+- Duplicate webhook events  
+- Network failures  
+- Partial transaction states  
+</div>
+
+<h2>Solutions</h2>
+
+<div class="box">
+- Idempotency keys  
+- Retry mechanisms  
+- Reconciliation jobs  
+</div>
+
+<h2>Impact</h2>
+
+<div class="box">
+- Reliable payment processing  
+- Reduced failure scenarios  
+- Improved system consistency  
+</div>
+
+</div>
+
+</body>
+</html>
