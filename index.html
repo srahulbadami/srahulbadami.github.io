@@ -1,62 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rahul Badami</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
 body{margin:0;font-family:'Space Grotesk';background:#0b1220;color:white}
-a{text-decoration:none;color:white}
-
-nav{position:fixed;top:0;width:100%;display:flex;justify-content:center;background:rgba(0,0,0,0.6)}
-.nav-container{width:100%;max-width:1100px;display:flex;justify-content:space-between;padding:16px}
-.nav-links{display:flex;gap:12px}
-.nav-links a{padding:8px 14px;border-radius:8px}
-.nav-links a:hover{background:#4f8cff}
+nav{position:fixed;top:0;width:100%;background:rgba(0,0,0,0.7);backdrop-filter:blur(10px)}
+.nav-container{max-width:1100px;margin:auto;display:flex;justify-content:space-between;padding:16px}
+.nav-links{display:flex;gap:20px}
+.nav-links a{color:white;text-decoration:none}
+.hamburger{display:none;font-size:24px}
 
 @media(max-width:768px){
-.nav-container{flex-direction:column;align-items:center}
-.nav-links{flex-wrap:wrap;justify-content:center;margin-top:10px}
+.nav-links{position:absolute;top:60px;width:100%;flex-direction:column;display:none;background:#0b1220;align-items:center}
+.nav-links.active{display:flex}
+.hamburger{display:block}
 }
 
-header{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
-
-h1{font-size:clamp(32px,8vw,64px);background:linear-gradient(90deg,#4f8cff,#22c55e,#f59e0b);-webkit-background-clip:text;color:transparent}
-
-.tag{color:#9aa4b2}
-.btn{margin-top:20px;padding:12px 24px;background:#4f8cff;border-radius:8px}
-
-.footer{position:absolute;bottom:20px;width:100%;text-align:center;color:#9aa4b2}
+main{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:80px 20px}
+h1{font-size:60px;margin:0}
+p{color:#9aa4b2;max-width:500px}
+.btn{margin-top:20px;padding:12px 20px;background:#4f8cff;border-radius:8px;color:white;text-decoration:none}
+footer{text-align:center;padding:10px;color:#9aa4b2}
 </style>
 </head>
 
 <body>
 
 <nav>
-  <div class="nav-container">
-    <div>Rahul Badami</div>
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="work.html">Work</a>
-      <a href="case-studies.html">Case Studies</a>
-      <a href="blog.html">Blog</a>
-      <a href="games.html">Games</a>
-    </div>
-  </div>
+<div class="nav-container">
+<div>Rahul Badami</div>
+<div class="nav-links" id="navLinks">
+<a href="index.html">Home</a>
+<a href="work.html">Work</a>
+<a href="case-studies.html">Case Studies</a>
+<a href="blog.html">Blog</a>
+<a href="games.html">Games</a>
+</div>
+<div class="hamburger" onclick="toggleMenu()">☰</div>
+</div>
 </nav>
 
-<header>
-  <h1>Rahul Badami</h1>
-  <p class="tag">SDE II @ Amazon • Distributed Systems • High Scale Backend</p>
-  <a class="btn" href="/resume.pdf">Resume</a>
-</header>
+<main>
+<h1>Rahul Badami</h1>
+<p>Backend Engineer building scalable distributed systems and high performance applications.</p>
+<a href="/resume.pdf" class="btn">Resume</a>
+</main>
 
-<div class="footer">
-  srahulbadami@gmail.com • github.com/srahulbadami • srahulbadami.in
-</div>
+<footer>
+srahulbadami@gmail.com • srahulbadami.in
+</footer>
+
+<script>
+function toggleMenu(){document.getElementById("navLinks").classList.toggle("active")}
+</script>
 
 </body>
 </html>

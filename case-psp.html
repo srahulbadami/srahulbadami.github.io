@@ -1,77 +1,111 @@
 <!DOCTYPE html>
+
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PSP Integration Case Study</title>
+<title>PSP System</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
-body{margin:0;font-family:Space Grotesk;background:#0b1220;color:white;padding:80px 20px}
-.container{max-width:900px;margin:auto}
+body{margin:0;font-family:'Orbitron',sans-serif;background:#0b1220;color:white}
+a{text-decoration:none;color:white}
+
+/* NAV */
+nav{
+position:fixed;top:0;width:100%;
+display:flex;justify-content:center;
+background:rgba(0,0,0,0.7);
+}
+.nav-container{
+width:100%;max-width:1100px;
+display:flex;justify-content:space-between;
+padding:16px
+}
+.nav-links{display:flex;gap:14px}
+.nav-links a:hover{background:white;color:black;padding:8px;border-radius:8px}
+
+/* CONTENT */
+.container{max-width:900px;margin:auto;padding:100px 20px}
 .box{background:#111827;padding:20px;border-radius:12px;margin-top:20px;color:#9aa4b2}
 .code{background:#020617;padding:16px;border-radius:8px;color:#22c55e;font-family:monospace;margin-top:16px}
 </style>
+
 </head>
 
 <body>
 
+<nav>
+<div class="nav-container">
+<div>Rahul Badami</div>
+<div class="nav-links">
+<a href="index.html">Home</a>
+<a href="work.html">Work</a>
+<a href="case-studies.html">Case</a>
+<a href="blog.html">Blog</a>
+<a href="games.html">Games</a>
+</div>
+</div>
+</nav>
+
 <div class="container">
 
-<h1>Payment System Integration (Stripe + Django)</h1>
+<h1>Payment System (Stripe + Django)</h1>
 
 <div class="box">
-Designed and implemented a robust payment system integrating Stripe with Django, focusing on reliability, consistency, and failure handling.
+Built a production-grade payment system focusing on reliability, consistency, and failure recovery.
 </div>
 
 <h2>Architecture</h2>
 
 <div class="code">
-Client → Backend (Django) → Stripe  
+Client → Django Backend → Stripe  
         ↓  
      Webhook Handler → DB
 </div>
 
-<h2>Payment Flow</h2>
+<h2>Flow</h2>
 
 <div class="code">
 intent = stripe.PaymentIntent.create(
-  amount=amount,
-  currency='usd'
+ amount=amount,
+ currency='usd'
 )
 </div>
 
 <div class="box">
-Payment creation is only the first step. Final confirmation comes from Stripe webhooks.
+Payment confirmation happens through webhook, not API response.
 </div>
 
-<h2>Webhook Handling</h2>
+<h2>Webhook</h2>
 
 <div class="code">
-if event['type'] == 'payment_intent.succeeded':
-    update_payment_status()
+if event['type']=='payment_intent.succeeded':
+ update_payment_status()
 </div>
 
 <h2>Challenges</h2>
 
 <div class="box">
-- Duplicate webhook events  
-- Network failures  
-- Partial transaction states  
+Duplicate events  
+Network failures  
+Partial transactions  
 </div>
 
 <h2>Solutions</h2>
 
 <div class="box">
-- Idempotency keys  
-- Retry mechanisms  
-- Reconciliation jobs  
+Idempotency keys  
+Retry with backoff  
+Reconciliation jobs  
 </div>
 
 <h2>Impact</h2>
 
 <div class="box">
-- Reliable payment processing  
-- Reduced failure scenarios  
-- Improved system consistency  
+Reliable payments  
+Consistency guaranteed  
+Failure-safe system  
 </div>
 
 </div>

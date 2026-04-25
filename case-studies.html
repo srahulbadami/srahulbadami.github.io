@@ -4,54 +4,53 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Case Studies</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
-
 <style>
-body{margin:0;font-family:'Space Grotesk';background:#0b1220;color:white}
+body{margin:0;font-family:Space Grotesk;background:#0b1220;color:white}
+nav{position:fixed;top:0;width:100%;background:rgba(0,0,0,0.7)}
+.nav-container{display:flex;justify-content:space-between;padding:16px}
+.nav-links{display:flex;gap:20px}
+.nav-links a{color:white;text-decoration:none}
+.hamburger{display:none}
+
+@media(max-width:768px){
+.nav-links{position:absolute;top:60px;width:100%;flex-direction:column;display:none;background:#0b1220}
+.nav-links.active{display:flex}
+.hamburger{display:block}
+}
+
+.container{max-width:900px;margin:auto;padding:100px 20px}
+.box{background:#111827;padding:20px;border-radius:12px;margin-top:20px}
 a{text-decoration:none;color:white}
-
-nav{position:fixed;width:100%;top:0;display:flex;justify-content:center;background:rgba(0,0,0,0.6)}
-.nav-container{max-width:1100px;width:100%;display:flex;justify-content:space-between;padding:16px}
-.nav-links{display:flex;gap:12px}
-.nav-links a{padding:8px 14px;border-radius:8px}
-.nav-links a:hover{background:#4f8cff}
-
-.container{max-width:1100px;margin:auto;padding:100px 20px}
-
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
-
-.card{background:#111827;padding:24px;border-radius:12px;transition:.3s}
-.card:hover{transform:scale(1.05)}
 </style>
 </head>
 
 <body>
 
 <nav>
-  <div class="nav-container">
-    <div>Rahul Badami</div>
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="work.html">Work</a>
-      <a href="case-studies.html">Case Studies</a>
-      <a href="blog.html">Blog</a>
-      <a href="games.html">Games</a>
-    </div>
-  </div>
+<div class="nav-container">
+<div>Rahul Badami</div>
+<div class="nav-links" id="navLinks">
+<a href="index.html">Home</a>
+<a href="work.html">Work</a>
+<a href="case-studies.html">Case</a>
+<a href="blog.html">Blog</a>
+<a href="games.html">Games</a>
+</div>
+<div class="hamburger" onclick="toggleMenu()">☰</div>
+</div>
 </nav>
 
 <div class="container">
-
 <h1>Case Studies</h1>
 
-<div class="grid">
-
-<a href="case-scaling.html"><div class="card"><h3>Scaling Backend</h3><p>Latency, async, throughput</p></div></a>
-<a href="case-psp.html"><div class="card"><h3>PSP Integration</h3><p>Payments, retries, idempotency</p></div></a>
-<a href="case-platform.html"><div class="card"><h3>Platform Engineering</h3><p>Deployments, domains, infra</p></div></a>
+<a href="case-scaling.html"><div class="box">Scaling Backend Systems</div></a>
+<a href="case-psp.html"><div class="box">Payment System</div></a>
 
 </div>
 
-</div>
+<script>
+function toggleMenu(){document.getElementById("navLinks").classList.toggle("active")}
+</script>
+
 </body>
 </html>
